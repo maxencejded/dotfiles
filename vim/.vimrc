@@ -1,0 +1,72 @@
+"
+" VIMRC for macOS (by Maxence Jacques de Dixmude)
+"
+
+" Set UTF-8 as standard encoding and en_US
+set encoding=utf-8
+set fileencoding=utf-8
+set fileencodings=utf-8
+set ffs=unix,dos,mac " Use Unix as the standard file type
+set backspace=indent,eol,start
+
+syntax enable " Enable syntax highlighting
+filetype off
+filetype plugin indent on
+set smartindent
+
+set nocompatible
+set autoindent "New lines inherit the indentation of the previous lines
+
+" Appearance of VIM
+set number " Display the line number
+set laststatus=2 " Always display the status bar
+set t_Co=256
+
+set mouse=a " Enable mouse for scrolling and resizing
+set history=1000 " Increase the undo limit
+
+" Theme
+syntax on
+colorscheme desert
+
+" Backup disable
+set nobackup
+set nowb
+set noswapfile
+
+" No annoying sound on errors
+set noerrorbells
+set novisualbell
+set t_vb=
+set tm=500
+
+set ru
+set hid
+
+set hlsearch " Enable search highlighting
+set ignorecase " Ignore case when searching
+set incsearch " Incremental search that shows partial matches
+set smartcase " Automatically switch search to case-sensitive
+set lazyredraw " Don't redraw while executing macros
+
+set tabstop=4 " Indent using four spaces
+set shiftwidth=4 " When shifting, indent using four spaces
+set noexpandtab
+
+set showmatch " Show matching brackets when text indicator is over them
+set modelines=1
+
+" Length max of a line @42
+set colorcolumn=81
+set textwidth=79
+
+" Turn on the Wild menu
+set wildmenu
+set wildmode=full
+set tabpagemax=50
+
+" Ignore compiled files
+set wildignore=*.o,*~,*.pyc,*/.git/*,*/.hg/*,*/.svn/*,*/.DS_Store
+
+" Remove whitespaces on save
+autocmd BufWritePre * :%s/\s\+$//e
