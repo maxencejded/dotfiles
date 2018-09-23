@@ -27,7 +27,7 @@ set history=1000 " Increase the undo limit
 
 " Theme
 syntax on
-colorscheme desert
+colorscheme dracula
 
 " Backup disable
 set nobackup
