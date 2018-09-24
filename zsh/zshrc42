@@ -1,0 +1,50 @@
+# If you come from bash you might have to change your $PATH.
+# export PATH=$HOME/bin:/usr/local/bin:$PATH
+echo "\e[1mWelcome \e[92m${USER}!\e[8m\e[0m Make great code today"
+
+# Path to your oh-my-zsh installation.
+export ZSH="/nfs/2017/m/mjacques/.macOS/oh-my-zsh"
+
+ZSH_DISABLE_COMPFIX=true
+
+ZSH_THEME="spaceship"
+
+# CASE_SENSITIVE="true" # Uncomment the following line to use case-sensitive completion.
+# HYPHEN_INSENSITIVE="true" # Uncomment the following line to use hyphen-insensitive completion.
+
+# DISABLE_AUTO_UPDATE="true" # Uncomment the following line to disable bi-weekly auto-update checks.
+# export UPDATE_ZSH_DAYS=13 # Uncomment the following line to change how often to auto-update (in days).
+
+# DISABLE_AUTO_TITLE="true" # Uncomment the following line to disable auto-setting terminal title.
+# ENABLE_CORRECTION="true" # Uncomment the following line to enable command auto-correction.
+# COMPLETION_WAITING_DOTS="true" # Uncomment the following line to display red dots whilst waiting for completion.
+# DISABLE_UNTRACKED_FILES_DIRTY="true" # Uncomment the following line if you want to disable marking untracked files
+
+plugins=(
+  git
+) # Standard plugins can be found in ~/.oh-my-zsh/plugins/*
+
+source $ZSH/oh-my-zsh.sh
+
+# Theme (https://denysdovhan.com/spaceship-prompt/)
+SPACESHIP_PROMPT_ORDER=(
+	user          # Username section
+	dir           # Current directory section
+	host          # Hostname section
+	git           # Git section (git_branch + git_status)
+	docker        # Docker section
+	exec_time     # Execution time
+	#line_sep      # Line break
+	vi_mode       # Vi-mode indicator
+	jobs          # Background jobs indicator
+	exit_code     # Exit code section
+	char          # Prompt character
+)
+
+SPACESHIP_PROMPT_ADD_NEWLINE=false
+SPACESHIP_CHAR_SYMBOL="➤  "
+#SPACESHIP_CHAR_SUFFIX=" "
+SPACESHIP_DIR_TRUNC=4
+#SPACESHIP_DIR_SUFFIX='\e[36m%B/%b '
+
+# export SSH_KEY_PATH="~/.ssh/rsa_id" # SSH_KEY
