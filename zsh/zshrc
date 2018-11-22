@@ -27,7 +27,6 @@ setopt hist_ignore_all_dups
 setopt hist_reduce_blanks
 setopt inc_append_history
 setopt share_history
-setopt correct_all
 setopt interactive_comments
 
 # Improve autocompletion style
@@ -53,8 +52,11 @@ SPACESHIP_PROMPT_ORDER=(
 SPACESHIP_PROMPT_ADD_NEWLINE=false
 SPACESHIP_CHAR_SYMBOL="➤  "
 #SPACESHIP_CHAR_SUFFIX=" "
-SPACESHIP_DIR_TRUNC=1
+SPACESHIP_DIR_TRUNC=2
 #SPACESHIP_DIR_SUFFIX='\e[36m%B/%b '
+SPACESHIP_DOCKER_VERBOSE=false
+SPACESHIP_DOCKER_SUFFIX=
+SPACESHIP_DOCKER_SHOW=false
 
 # Simplify prompt if we're using Hyper
 if [[ "$TERM_PROGRAM" == "Hyper" ]]; then
@@ -72,5 +74,3 @@ alias ls='ls -G'
 
 # Plugin
 source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
-
-echo "\e[1mWelcome \e[92m${USER}!\e[8m\e[0m Make great code today"

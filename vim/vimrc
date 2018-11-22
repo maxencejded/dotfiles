@@ -26,6 +26,8 @@ set mouse=a " Enable mouse for scrolling and resizing
 set history=1000 " Increase the undo limit
 
 " Theme
+"colorscheme tokyo-metro "srcery
+"let g:srcery_italic = 1
 syntax on
 colorscheme dracula
 
