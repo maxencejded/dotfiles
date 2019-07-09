@@ -16,6 +16,9 @@ fi
 mv .macOS/vim ~/.vim
 ln -s .vim/vimrc $VIMRC
 
+# bash
+cp .macOS/profile .profile
+
 # Add the fonts
 git clone https://github.com/powerline/fonts.git --depth=1
 sh fonts/install.sh ; rm -rfR fonts
