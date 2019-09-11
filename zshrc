@@ -42,11 +42,14 @@ setopt auto_list
 setopt auto_menu
 setopt interactive_comments
 
+at_normal=$'\e[0m'
+at_italics=$'\e[3m'
+
 # Prompt
-#PROMPT='➤  '
+#PROMPT='%{${at_italics}%}➤  %{${at_normal}%}'
 setopt PROMPT_SUBST
-#PROMPT='%B%3~%b %(?.%{$fg[green]%}.%{$fg[red]%})➤ %{$reset_color%} '
-PROMPT='%B%(4~|%-1~/../%2~|%3~)%b %(?.%{$fg[green]%}.%{$fg[red]%})➤ %{$reset_color%} '
+#PROMPT='%B%3~%b %(?.%{$fg[green]%}.%{$fg[red]%})%{${at_italics}%}➤  %{$reset_color%}'
+PROMPT='%B%(4~|%-1~/../%2~|%3~)%b %(?.%{$fg[green]%}.%{$fg[red]%})%{${at_italics}%}➤  %{$reset_color%}'
 
 # Aliases
 alias ls='ls -G'
