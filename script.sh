@@ -7,6 +7,9 @@ COLOREDEND="\033[0m"
 # Vim
 printf "Copy$COLORGREEN vim$COLOREDEND preferences files\n"
 mv vim $HOME/.vim
+if [ -f $HOME/.vimrc ]; then
+	mv $HOME/.vimrc $HOME/.vim/.vimrc_old
+fi
 ln -s $HOME/.vim/vimrc $HOME/.vimrc
 
 if [ "$SHELL" == "/bin/bash" ]; then
