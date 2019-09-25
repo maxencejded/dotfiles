@@ -1,3 +1,7 @@
+#
+# .profile
+# 	edited by Maxence Jacques de Dixmude
+#
 
 local RCol='\[\e[0m\]'
 local Red='\[\e[0;31m\]'
@@ -21,6 +25,7 @@ __prompt() {
 
 PROMPT_COMMAND=__prompt
 
+# History
 export HISTCONTROL=ignorespace:ignoredups
 export HISTSIZE=2048
 
@@ -28,4 +33,4 @@ export HISTSIZE=2048
 # update the values of LINES and COLUMNS.
 shopt -s checkwinsize
 
-# EOF #
+# EOF

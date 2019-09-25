@@ -48,15 +48,34 @@ at_italics=$'\e[3m'
 # Prompt
 #PROMPT='%{${at_italics}%}➤  %{${at_normal}%}'
 setopt PROMPT_SUBST
-#PROMPT='%B%3~%b %(?.%{$fg[green]%}.%{$fg[red]%})%{${at_italics}%}➤  %{$reset_color%}'
-PROMPT='%B%(4~|%-1~/../%2~|%3~)%b %(?.%{$fg[green]%}.%{$fg[red]%})%{${at_italics}%}➤  %{$reset_color%}'
+_setup_ps1() {
+	if [ $SSH_CLIENT ]; then
+		SSH="%{$fg[magenta]%}%n%{${at_normal}%} at %M:"
+	else
+		SSH=""
+	fi
+	#PS1='%B%3~%b %(?.%{$fg[green]%}.%{$fg[red]%})%{${at_italics}%}➤  %{$reset_color%}'
+	PS1='$SSH%B%(4~|%-1~/../%2~|%3~)%b %(?.%{$fg[green]%}.%{$fg[red]%})%{${at_italics}%}➤  %{$reset_color%}'
+}
+_setup_ps1
 
 # Aliases
 alias ls='ls -G'
+alias ll='ls -lG'
+alias la='ls -lAG'
+alias ga='git add'
+alias gc='git commit -m'
+alias gp='git push origin'
+alias mkcd='f() { mkdir $1 && cd $1 }; f'
 
-# Plugin
-## ZSH Auto Suggestions
-### link: https://github.com/zsh-users/zsh-autosuggestions
-#source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+alias code='open -a "Visual Studio Code"'
 
-# EOF #
+function delete() {
+	if [ -d "$HOME/.Trash" ]; then
+		mv $@ "$HOME/.Trash"
+	else
+		rm -rf $@
+	fi
+}
+
+# EOF

@@ -1,5 +1,6 @@
 "
-" VIMRC for macOS (by Maxence Jacques de Dixmude)
+" .vimrc
+"   edited by Maxence Jacques de Dixmude
 "
 
 " Set UTF-8 as standard encoding and en_US
@@ -75,5 +76,4 @@ set wildignore=*.o,*~,*.pyc,*/.git/*,*/.hg/*,*/.svn/*,*/.DS_Store
 " Remove whitespaces on save
 autocmd BufWritePre * :%s/\s\+$//e
 
-map <C-c> :s/^/\/\//<Enter>
-map <C-u> :s/^\/\///<Enter>
+" EOF
