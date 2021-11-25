@@ -21,6 +21,10 @@ zstyle ':completion:*' group-name ''
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
 zstyle ':completion:::::' completer _expand _complete _ignored _approximate
 
+# vim mode
+bindkey -v
+export KEYTIMEOUT=1
+
 # Bell
 unsetopt beep
 unsetopt list_beep
@@ -50,7 +54,7 @@ at_italics=$'\e[3m'
 setopt PROMPT_SUBST
 _setup_ps1() {
 	if [ $SSH_CLIENT ]; then
-		SSH="%{$fg[magenta]%}%n%{${at_normal}%} at %M:"
+		SSH="%{$fg[magenta]%}%n%{${at_normal}%}@%M:"
 	else
 		SSH=""
 	fi
@@ -58,6 +62,32 @@ _setup_ps1() {
 	PS1='$SSH%B%(4~|%-1~/../%2~|%3~)%b %(?.%{$fg[green]%}.%{$fg[red]%})%{${at_italics}%}➤  %{$reset_color%}'
 }
 _setup_ps1
+
+merge_master() {
+	git checkout master
+	git merge $(git config user.name)
+	git pull
+}
+
+merge_user() {
+	git checkout $(git config user.name)
+	git merge master
+	git push origin $(git config user.name)
+}
+
+h=()
+if [[ -r ~/.ssh/config ]]; then
+	h=($h ${${${(@M)${(f)"$(cat ~/.ssh/config)"}:#Host *}#Host }:#*[*?]*})
+fi
+if [[ -r ~/.ssh/known_hosts ]]; then
+	h=($h ${${${(f)"$(cat ~/.ssh/known_hosts{,2} || true)"}%%\ *}%%,*}) 2>/dev/null
+fi
+if [[ $#h -gt 0 ]]; then
+	zstyle ':completion:*:ssh:*' hosts $h
+fi
+
+eval "`pip completion --zsh`"
+eval "`pip3 completion --zsh`"
 
 # Aliases
 alias ls='ls -G'
