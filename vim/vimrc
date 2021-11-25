@@ -9,14 +9,17 @@ set fileencoding=utf-8
 set fileencodings=utf-8
 set ffs=unix,dos,mac	" Use Unix as the standard file type
 set backspace=indent,eol,start
+set nofixendofline
+set noeol
 
 syntax enable 			" Enable syntax highlighting
 filetype off
 filetype plugin indent on
+filetype indent on
+set autoindent			"New lines inherit the indentation of the previous lines
 set smartindent
 
 set nocompatible
-set autoindent			"New lines inherit the indentation of the previous lines
 
 " Appearance of VIM
 set number				" Display the line number
@@ -54,16 +57,16 @@ set incsearch			" Incremental search that shows partial matches
 set smartcase			" Automatically switch search to case-sensitive
 set lazyredraw			" Don't redraw while executing macros
 
-set tabstop=4			" Indent using four spaces
-set shiftwidth=4		" When shifting, indent using four spaces
+set ts=3
+set tabstop=3
+set shiftwidth=3
+set softtabstop=3
 set noexpandtab
+set smarttab
 
 set showmatch			" Show matching brackets when text indicator is over
+set cursorline
 set modelines=1
-
-" Length max of a line @42
-set colorcolumn=81
-set textwidth=79
 
 " Turn on the Wild menu
 set wildmenu
@@ -76,4 +79,14 @@ set wildignore=*.o,*~,*.pyc,*/.git/*,*/.hg/*,*/.svn/*,*/.DS_Store
 " Remove whitespaces on save
 autocmd BufWritePre * :%s/\s\+$//e
 
-" EOF
+" indent/unindent with tab/shift-tab
+nmap <Tab> >>
+nmap <S-tab> <<
+imap <S-Tab> <Esc><<i
+vmap <Tab> >gv
+vmap <S-Tab> <gv
+
+let python_highlight_all = 1
+au BufNewFile,BufRead *.py set tabstop=3 softtabstop=3 shiftwidth=3 noexpandtab smarttab autoindent
+
+""" EOF """
